@@ -1,0 +1,154 @@
+{
+  "identity": {
+    "slug": "coordinator",
+    "name": "Coordinator",
+    "former": "",
+    "type": "bridge",
+    "cluster": ["System"],
+    "hostBase": "coordinator.life.local",
+    "inherits": "Life",
+    "commercial": false,
+    "ports": {}
+  },
+  "functions": [
+    {
+      "key": "gruppi-telegram",
+      "label": "💬 Gruppi Telegram per progetto",
+      "agent": "bot-handlers",
+      "command": "/progetti",
+      "companions": ["session-routing"]
+    },
+    {
+      "key": "sessioni-claude",
+      "label": "🧭 Sessioni Claude dai gruppi",
+      "agent": "session-routing",
+      "command": "/nuovo",
+      "companions": []
+    },
+    {
+      "key": "wake-agent",
+      "label": "⏰ Wake degli agenti prod",
+      "agent": "hub-integration",
+      "command": "",
+      "companions": ["coordinator-integration-dev"]
+    },
+    {
+      "key": "bus-network",
+      "label": "🔌 Bus Network (SSE + A2A)",
+      "agent": "hub-integration",
+      "command": "/hub",
+      "companions": []
+    },
+    {
+      "key": "notifiche-schedulate",
+      "label": "🔔 Notifiche schedulate",
+      "agent": "notifications",
+      "command": "/notifiche",
+      "companions": []
+    },
+    {
+      "key": "frontend-notifiche",
+      "label": "🖥 Frontend notifiche web",
+      "agent": "notifications",
+      "command": "",
+      "companions": []
+    },
+    {
+      "key": "capability-cli",
+      "label": "🧰 Capability CLI per progetto",
+      "agent": "bot-handlers",
+      "command": "",
+      "companions": []
+    },
+    {
+      "key": "proposte-scheduler",
+      "label": "🗓 Proposte verso Scheduler",
+      "agent": "coordinator-integration-dev",
+      "command": "/hw_riposo",
+      "companions": []
+    },
+    {
+      "key": "escalation",
+      "label": "🚨 Escalation needs-human",
+      "agent": "hub-integration",
+      "command": "",
+      "companions": []
+    }
+  ],
+  "notifications": [],
+  "collaborations": {
+    "parent": null,
+    "children": [
+      {
+        "slug": "system",
+        "name": "System"
+      }
+    ],
+    "integrations": [
+      {
+        "name": "AgentHub",
+        "kind": "bus",
+        "detail": "message bus inter-agente"
+      },
+      {
+        "name": "Coordinator",
+        "kind": "orchestrator",
+        "detail": "bot Telegram, comandi"
+      },
+      {
+        "name": "Telegram Bot API",
+        "direction": "in/out",
+        "note": "bot unico multi-progetto (gruppi forum + topic)"
+      },
+      {
+        "name": "Network (bus)",
+        "direction": "in/out",
+        "note": "SSE listener + webhook A2A push"
+      },
+      {
+        "name": "Scheduler Agent API",
+        "direction": "out",
+        "note": "proposte preference/fixed_event a segreto condiviso"
+      }
+    ]
+  },
+  "brain": {
+    "total": 10,
+    "content": 10,
+    "hubs": 0,
+    "links": 43,
+    "components": 1,
+    "per_area": [
+      [".", 9],
+      ["decisions", 1]
+    ]
+  },
+  "frontend_pages": [],
+  "wikilinks": [
+    {
+      "target": "README",
+      "label": "Indice del brain del nodo Coordinator (bot Telegram/scheduler/hub), con le note durevoli su architettura, decisioni, gotcha, runbook, glossario, DB e frontend."
+    },
+    {
+      "target": "bus-agent-naming",
+      "label": "Decisione canonica 2026-06-24 (regola d'oro Life #0). Un nodo = UN solo nome tecnico, lo slug Life, riusato ovunque: chiave Coordinator (projects.local.json, BOT_LOCAL_AGENTS, WS_*) = agente bus (<slug>-local/<slug>-prod) = node.config. I vecchi nomi lowercase sono demoti ad alias di risoluzione. resolve_project reso case-insensitive. Niente più alias-come-identità."
+    },
+    {
+      "target": "architecture",
+      "label": "(riconciliato — da completare)"
+    }
+  ],
+  "generated_at": "2026-07-02T07:49:17.964108+00:00",
+  "overview": {
+    "highlights": [
+      {
+        "name": "notifications",
+        "label": "Notifiche schedulate"
+      },
+      {
+        "name": "notif_runs",
+        "label": "Run di notifica"
+      }
+    ]
+  }
+}

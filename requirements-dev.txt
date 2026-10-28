@@ -1,0 +1,17 @@
+# Test/dev dependencies (NOT needed at runtime — the Docker image uses requirements.txt).
+# Reproducible test setup on a fresh clone:  .venv/Scripts/pip install -r requirements-dev.txt
+-r requirements.txt
+pytest>=8
+pytest-asyncio>=1.0
+# openlocationcode: dipendenza OPZIONALE di tools/fetch_url.py (decodifica dei
+# Plus Code nei link Maps condivisi). A runtime la sua assenza degrada con un
+# warning, quindi non sta in requirements.txt; i test la assumono presente.
+openlocationcode>=1.0
+# responses: mock del transport `requests` in tests/test_graph_mailer.py, che
+# intercetta le chiamate sendMail a MS Graph senza toccare la rete. Era importato
+# ma non dichiarato: su un venv pulito il modulo non si importava e l'intera
+# raccolta si fermava, non solo quel file.
+responses>=0.25
+# ruff: lint + format, configurato da ruff.toml (asset gestito dal `conform` di Life).
+# In CI gira non bloccante finché le ~196 violazioni preesistenti non sono rientrate.
+ruff>=0.6

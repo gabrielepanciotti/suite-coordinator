@@ -1,0 +1,9 @@
+/* suite-managed (theme) — GENERATO da conform da node.config "theme" (Life#146).
+   Non modificare a mano: `python -m suite_core.nodes theme show|use|set|reset <nodo>`.
+   Importato nell'index.css del nodo SUBITO DOPO @suite/design-system/theme.css.
+   Layer vuoto = il nodo segue il tema globale. */
+@layer ds.base, ds.global, ds.cluster, ds.node, ds.user;
+
+@layer ds.cluster {}
+
+@layer ds.node {}

@@ -1,0 +1,20 @@
+{
+  "assets": [
+    "gitignore",
+    "ruff",
+    "brain-wiki",
+    "deploy",
+    "frontend"
+  ],
+  "files": {
+    "frontend/src/suite-theme.css": "sha256:b8998b6c8c592f36bfb8818780cf37d07a1e333b1db53e7c97fc5a631c57f906",
+    "ruff.toml": "sha256:cf28c882590d07b190f9a6a18049f53d66956c1e58ef4535d0ac23d078c02fb3"
+  },
+  "node": "coordinator",
+  "packages": [
+    "suite-backend-core",
+    "@suite/design-system",
+    "@suite/i18n"
+  ],
+  "profile": "bridge"
+}

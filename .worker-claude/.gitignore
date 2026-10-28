@@ -1,0 +1,8 @@
+# Whitelist: this dir is the worker's minimal Claude home. Only the config files
+# are versioned; everything else here is runtime state written by `claude` inside
+# the container (OAuth .credentials.json, session transcripts, projects, backups)
+# and MUST NOT be committed.
+*
+!.gitignore
+!settings.json
+!README.md

@@ -1,0 +1,35 @@
+python-telegram-bot>=21,<22
+httpx>=0.27
+tzdata>=2024.1
+apscheduler>=3.10,<4
+fastapi>=0.110,<1
+uvicorn[standard]>=0.27,<1
+# graph_mailer (bozze del maggiordomo, #20/#24) parla MS Graph con `requests`
+# attraverso la cache MSAL condivisa: dipendenze runtime del bot.
+#
+# Su un device senza le credenziali del submodule la riga `-e` viene tolta
+# dalla build (vedi Dockerfile): il bot parte lo stesso e le funzioni che
+# usano il mailer degradano da sole, perche' lo importano pigramente dentro
+# l'handler. Non serve togliere il mailer per proteggere un device personale.
+requests>=2.31,<3
+msal>=1.28,<2
+# I pacchetti in vendor/ (submodule dell'installazione) NON stanno qui: un
+# clone senza accesso a quei repo non puo' scaricarli e `pip install -r`
+# fallirebbe. Li installa il Dockerfile solo se ci sono; in locale:
+#   .venv/bin/pip install -e ./vendor/<pacchetto>   (se inizializzato)
+# Node DB (additive/optional): bridge-domain mirror via DATABASE_URL
+sqlalchemy>=2.0,<3
+alembic>=1.13,<2
+psycopg[binary]>=3.1,<4
+# Le sessioni claude che girano nei workspace dei nodi Life lanciano i package
+# condivisi montati in /life-packages (vedi PYTHONPATH nel compose).
+# suite_backend_core importa pydantic-settings all'import: senza, ogni comando
+# `python -m suite_learn_core ...` muore prima di partire, e il fallimento si
+# vede solo dentro il container.
+pydantic-settings>=2,<3
+# OCR di default sulle foto ricevute in chat (bot.py:_ocr_image): non tutti i
+# backend/modelli che questo bot puo' far girare vedono le immagini (vedi
+# AI_BACKEND/MODEL_CATALOG in claude_runner.py) - il binario tesseract-ocr
+# va installato a livello di sistema, vedi Dockerfile.
+pytesseract>=0.3,<1
+Pillow>=10,<12

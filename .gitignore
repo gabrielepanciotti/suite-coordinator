@@ -1,0 +1,88 @@
+# Dated .env backups (e.g. .env.bak.20260617-composefile) — the *.bak rule below
+# misses them because ".bak" sits mid-name, not as the extension. Contains secrets.
+.env.bak*
+__pycache__/
+*.pyc
+# Persisted runtime state (topic bindings + sessions)
+data/
+!data/.gitkeep
+# Per-device project registry (template: projects.local.example.json)
+projects.local.json
+# Per-device compose override (rete locale di AgentHub)
+docker-compose.override.yml
+# Secret backups (e.g. old/.env.bot.bak — contains the Telegram bot token)
+*.bak
+data-worker/
+projects.host.json
+
+# Life frattale — file generati dal resolver
+
+# brain/ — conoscenza durevole (gitignored salvo README)
+# Firecrawl cache
+.firecrawl/
+# >>> suite-managed >>>
+node.config.resolved.json
+.claude/agents/*-api-reviewer.md
+.ai/agents/*-api-reviewer.md
+.claude/agents/*-backend-impl.md
+.ai/agents/*-backend-impl.md
+.claude/agents/*-bot-handler.md
+.ai/agents/*-bot-handler.md
+.claude/agents/*-cli-dev.md
+.ai/agents/*-cli-dev.md
+.claude/agents/*-db-migrator.md
+.ai/agents/*-db-migrator.md
+.claude/agents/*-integration-dev.md
+.ai/agents/*-integration-dev.md
+.claude/agents/*-node-persona.md
+.ai/agents/*-node-persona.md
+.claude/agents/*-react-component.md
+.ai/agents/*-react-component.md
+.claude/agents/*-ui-reviewer.md
+.ai/agents/*-ui-reviewer.md
+.mcp.json
+opencode.json
+.superpowers/
+.brain-inbox/
+# link to a shared skills dir (no trailing slash: symlinks don't match dir patterns)
+.claude/skills
+brain/private/
+**/brain/private/
+.obsidian/
+.venv/
+.env
+.env.production
+frontend/vendor/*
+backend/vendor/*
+*.stackdump
+# <<< suite-managed <<<
+.claude/worktrees/
+.remember/logs/
+.claude/inbox/
+.HA_VERSION
+old/db-backups/
+old/db-migration-2026-06-14/
+old/contribution-bundle/
+.env.worker-owner
+# Env of the standby poller on a box with its own Coordinator (#83, conv 720)
+.env.poller
+
+# device-specific worker config (real per-PC paths) + logs
+projects.worker-owner.json
+logs/
+
+# Backup di .env finiti tracciati per sbaglio: contenevano la tenant key del bus,
+# il token del bot Telegram, un OAuth token e password DB. Il valore resta nella
+# history (repo privato) — qui si impedisce almeno che ne ricompaiano di nuovi.
+old/.env*
+**/.env.*bak*
+**/*.env.bak*
+
+# Cache del registro dei progetti (last-good del grafo Life): stato, non sorgente.
+projects.cache.json
+
+# per-device: sovrascritto da apply-tools-policy.py, mai identico tra i checkout
+.claude/settings.json
+
+# Local backups of the per-device projects map (absolute paths, never versioned)
+projects.local.json.bak-*

@@ -1,0 +1,28 @@
+{
+  "watchers": [
+    {
+      "key": "cheftoni",
+      "node_key": "personalChef",
+      "cadence": "cron:0 11 * * *",
+      "pre_gate": "temporal",
+      "enabled": false,
+      "recipient_profile": "owner"
+    },
+    {
+      "key": "mycorise-umidita",
+      "node_key": "mycorise",
+      "cadence": "cron:0 9 * * *",
+      "pre_gate": "dati",
+      "gate_cmd": "false  # TODO: probe HA -> exit 0 when humidity trend flat (refill humidifier bucket)",
+      "enabled": false,
+      "recipient_profile": "owner"
+    }
+  ],
+  "trust": {
+    "categories": {
+      "cucina": "trusted"
+    },
+    "daily_cap": 2,
+    "default_category_id": 1
+  }
+}

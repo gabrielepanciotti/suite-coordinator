@@ -1,0 +1,228 @@
+[
+  {
+    "key": "personalChef",
+    "label": "🍳 PersonalChef",
+    "emoji": "🍳",
+    "host_rel": "PersonalChef",
+    "workspace": "/workspaces/personalChef",
+    "aliases": [],
+    "kind": "personal"
+  },
+  {
+    "key": "mycorise",
+    "label": "🍄 Mycorise",
+    "emoji": "🍄",
+    "host_rel": "Mycorise",
+    "workspace": "/workspaces/mycorise",
+    "aliases": [],
+    "kind": "personal"
+  },
+  {
+    "key": "homeResearcher",
+    "label": "🏠 HomeResearcher",
+    "emoji": "🏠",
+    "host_rel": "Casa/HomeResearcher",
+    "workspace": "/workspaces/homeResearcher",
+    "aliases": [],
+    "kind": "personal"
+  },
+  {
+    "_comment": "Travel domain: split from the monolithic Travelers repo (retired 2026-07-04) into 4 independent Life nodes, each with its own workspace/ports.",
+    "key": "travel",
+    "label": "🧳 Travel",
+    "emoji": "🧳",
+    "host_rel": "Travel",
+    "workspace": "/workspaces/travel",
+    "aliases": [
+      "travel",
+      "viaggi",
+      "viaggio"
+    ],
+    "session_globs": [
+      "*--srv-travel*",
+      "-workspaces-travel*"
+    ],
+    "kind": "personal"
+  },
+  {
+    "key": "experienceFinder",
+    "label": "🎟 ExperienceFinder",
+    "emoji": "🎟",
+    "host_rel": "ExperienceFinder",
+    "workspace": "/workspaces/experienceFinder",
+    "aliases": [
+      "experiencefinder",
+      "esperienze"
+    ],
+    "kind": "personal"
+  },
+  {
+    "key": "stayFinder",
+    "label": "🏨 StayFinder",
+    "emoji": "🏨",
+    "host_rel": "StayFinder",
+    "workspace": "/workspaces/stayFinder",
+    "aliases": [
+      "stayfinder",
+      "alloggi"
+    ],
+    "kind": "personal"
+  },
+  {
+    "key": "transportFinder",
+    "label": "🚆 TransportFinder",
+    "emoji": "🚆",
+    "host_rel": "TransportFinder",
+    "workspace": "/workspaces/transportFinder",
+    "aliases": [
+      "transportfinder",
+      "trasporti"
+    ],
+    "kind": "personal"
+  },
+  {
+    "key": "offerte",
+    "label": "💼 Hub Offerte",
+    "emoji": "💼",
+    "host_rel": "Offerte",
+    "workspace": "/workspaces/offerte",
+    "aliases": [
+      "offerte",
+      "hub"
+    ],
+    "kind": "work"
+  },
+  {
+    "key": "cruscotto",
+    "label": "📊 Cruscotto",
+    "emoji": "📊",
+    "host_rel": "Cruscotto",
+    "workspace": "/workspaces/cruscotto",
+    "aliases": [
+      "cruscotto"
+    ],
+    "kind": "work"
+  },
+  {
+    "key": "etl",
+    "label": "🔄 ETL V2",
+    "emoji": "🔄",
+    "host_rel": "ETL_V2",
+    "workspace": "/workspaces/etl",
+    "aliases": [
+      "etl",
+      "etlv2"
+    ],
+    "kind": "work"
+  },
+  {
+    "key": "db",
+    "label": "🗄 DB",
+    "emoji": "🗄",
+    "host_rel": "db",
+    "workspace": "/workspaces/db",
+    "aliases": [
+      "db",
+      "maindb"
+    ],
+    "kind": "work"
+  },
+  {
+    "key": "segnalatori",
+    "label": "📨 Segnalatori",
+    "emoji": "📨",
+    "host_rel": "PortaleWeb_Segnalatori",
+    "workspace": "/workspaces/segnalatori",
+    "aliases": [
+      "segnalatori",
+      "portale",
+      "segnalazioni"
+    ],
+    "kind": "work"
+  },
+  {
+    "key": "scheduler",
+    "label": "🗓 Scheduler",
+    "emoji": "🗓",
+    "host_rel": "Scheduler",
+    "workspace": "/workspaces/scheduler",
+    "aliases": [],
+    "kind": "personal"
+  },
+  {
+    "key": "academicAssistant",
+    "label": "🎓 AcademicAssistant",
+    "emoji": "🎓",
+    "host_rel": "AcademicAssistant",
+    "workspace": "/workspaces/academicAssistant",
+    "aliases": [
+      "academicassistant",
+      "uni",
+      "universita"
+    ],
+    "kind": "personal"
+  },
+  {
+    "_comment": "\"agenthub\" stays an alias, not a key: it is what people (and older topics) still type, and the bus carried agenthub-* agent names until the 2026-07-31 rename. Dropping it would break those callers silently.",
+    "key": "network",
+    "label": "🛰 Network",
+    "emoji": "🛰",
+    "host_rel": "Network",
+    "workspace": "/workspaces/network",
+    "aliases": [
+      "agenthub",
+      "hub-agenti",
+      "bus"
+    ],
+    "kind": "work"
+  },
+  {
+    "key": "cosmos",
+    "label": "🪐 Cosmos",
+    "emoji": "🪐",
+    "host_rel": "Cosmos",
+    "workspace": "/workspaces/cosmos",
+    "aliases": [],
+    "kind": "personal"
+  },
+  {
+    "key": "tabella",
+    "label": "📋 Tabella Offerte",
+    "emoji": "📋",
+    "host_rel": "Tabella_Offerte",
+    "workspace": "/workspaces/tabella",
+    "aliases": [
+      "tabella",
+      "tabella-offerte"
+    ],
+    "kind": "work"
+  },
+  {
+    "_comment": "\"agent-dashboard\" is its dead name (renamed 2026-06-26), kept as aliases only. The key and the workspace follow the mount the compose files really create (WS_LAUNCHER -> /workspaces/launcher): with the old \"dashboard\" key, the edge box's launcher-prod listened for a project this fallback registry did not know, and every wake for it was dropped.",
+    "key": "launcher",
+    "label": "🖥 Launcher",
+    "emoji": "🖥",
+    "host_rel": "Launcher",
+    "workspace": "/workspaces/launcher",
+    "aliases": [
+      "dashboard",
+      "agent-dashboard"
+    ],
+    "kind": "work"
+  },
+  {
+    "key": "offerte-pubbliche",
+    "label": "📣 VetrinaOffertePubbliche",
+    "emoji": "📣",
+    "host_rel": "VetrinaOffertePubbliche",
+    "workspace": "/workspaces/offerte-pubbliche",
+    "aliases": [
+      "offerte-pubbliche",
+      "pubbliche",
+      "vetrina",
+      "vetrinaofferte",
+      "vetrinaoffertepubbliche"
+    ],
+    "kind": "work"
+  }
+]

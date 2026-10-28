@@ -1,0 +1,3 @@
+# Gli script di shell devono restare LF, così girano sul server Linux
+# (un CRLF su #!/usr/bin/env bash romperebbe l'interprete).
+*.sh text eol=lf

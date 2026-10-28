@@ -1,0 +1,90 @@
+# UX human-readable del Coordinator per la scheda-nodo (/scheda-nodo).
+# Ogni [[functionality]] è una voce del menu "vista semplice" e/o una riga
+# nella card "Funzioni & comandi" della scheda nodo.
+# Campi: key, label (con emoji), agent (primario), companions[], seed (prompt d'apertura, [CMD:/x] opzionale).
+
+[[functionality]]
+key = "gruppi-telegram"
+label = "💬 Gruppi Telegram per progetto"
+agent = "bot-handlers"
+companions = ["session-routing"]
+seed = "[CMD:/progetti] — ogni progetto Life ha il suo gruppo/topic Telegram: il bot unico del Coordinator instrada messaggi, comandi e callback al progetto giusto (forum + topic binding)."
+
+[[functionality]]
+key = "sessioni-claude"
+label = "🧭 Sessioni Claude dai gruppi"
+agent = "session-routing"
+seed = "[CMD:/nuovo] — avvio, ripresa (/riprendi) e chiusura (/chiudi) di sessioni Claude Code per progetto direttamente da Telegram, con persona e workspace del progetto."
+
+[[functionality]]
+key = "wake-agent"
+label = "⏰ Wake degli agenti prod"
+agent = "hub-integration"
+companions = ["coordinator-integration-dev"]
+seed = "Il worker headless sveglia gli agenti prod dei nodi (wake pool + claude_runner) quando arriva un messaggio sul bus Network destinato a loro."
+
+[[functionality]]
+key = "bus-network"
+label = "🔌 Bus Network (SSE + A2A)"
+agent = "hub-integration"
+seed = "[CMD:/hub] — listener SSE sul bus Network (ex-AgentHub) e webhook A2A in ingresso (/a2a/webhook) per le push notification: conversazioni agent-to-agent instradate al dispatcher."
+
+[[functionality]]
+key = "notifiche-schedulate"
+label = "🔔 Notifiche schedulate"
+agent = "notifications"
+seed = "[CMD:/notifiche] — APScheduler in-process con provider (agente / coltivazione / testo), destinazione DM o gruppo, gestibili da Telegram e dal frontend web."
+
+[[functionality]]
+key = "frontend-notifiche"
+label = "🖥 Frontend notifiche web"
+agent = "notifications"
+seed = "UI web (Vite dev server :3335) sopra l'API REST in-process (:10001) per creare, modificare e testare le notifiche schedulate."
+
+[[functionality]]
+key = "capability-cli"
+label = "🧰 Capability CLI per progetto"
+agent = "bot-handlers"
+seed = "Ogni progetto dichiara in .claude/coordinator.toml le sue capability CLI: diventano comandi del bot nel gruppo del progetto e nella sala regia."
+
+[[functionality]]
+key = "proposte-scheduler"
+label = "🗓 Proposte verso Scheduler"
+agent = "coordinator-integration-dev"
+seed = "[CMD:/hw_riposo] — capability scheduler_proposal: il Coordinator inoltra preferenze e blocchi orari come Proposte all'Agent API di Scheduler, che la persona conferma dal suo DM."
+
+[[functionality]]
+key = "escalation"
+label = "🚨 Escalation needs-human"
+agent = "hub-integration"
+seed = "Quando un agente sul bus chiede intervento umano, il Coordinator porta l'escalation nel gruppo Telegram giusto e traccia la risoluzione."
+
+# Integrazioni cross-nodo curate a mano: Telegram è il bot proprietario del
+# Coordinator (non passa da env di terzi); Scheduler via Agent API
+# (SCHEDULER_API_URL + AGENT_API_SECRET); Network via bus SSE/A2A.
+
+[[overview.integrations]]
+name = "Telegram Bot API"
+direction = "in/out"
+note = "bot unico multi-progetto (gruppi forum + topic)"
+
+[[overview.integrations]]
+name = "Network (bus)"
+direction = "in/out"
+note = "SSE listener + webhook A2A push"
+
+[[overview.integrations]]
+name = "Scheduler Agent API"
+direction = "out"
+note = "proposte preference/fixed_event a segreto condiviso"
+
+# Highlight DB della scheda-nodo: tabelle in evidenza nella card "Stato DB (live)".
+# I conteggi sono risolti live dall'endpoint GET /api/overview.
+
+[[overview.highlights]]
+name = "notifications"
+label = "Notifiche schedulate"
+
+[[overview.highlights]]
+name = "notif_runs"
+label = "Run di notifica"

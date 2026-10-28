@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Guardia repo NUCLEO: blocca commit che tracciano dati/config d'istanza nel
+# codice condiviso (file per-device, path assoluti device-specific, credenziali).
+# Vedi ~/.claude/scripts/check-confini-nucleo.py per il perche' e il dettaglio.
+python3 "$HOME/.claude/scripts/check-confini-nucleo.py" --staged

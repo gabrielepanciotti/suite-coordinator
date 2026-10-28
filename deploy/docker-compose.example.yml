@@ -1,0 +1,14 @@
+services:
+  coordinator-bot:
+    build: ..
+    env_file:
+      - ../.env
+    volumes:
+      - ../data:/app/data
+      - ${CLAUDE_HOST_DIR:?Set CLAUDE_HOST_DIR}:/home/app/.claude
+    restart: unless-stopped
+
+  frontend:
+    build: ../frontend
+    ports:
+      - "3335:80"

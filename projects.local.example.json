@@ -1,0 +1,22 @@
+{
+  "projects": [
+    {
+      "key": "shop",
+      "label": "🛒 Shop",
+      "emoji": "🛒",
+      "host_path": "/srv/projects/Shop",
+      "workspace": "/workspaces/shop",
+      "aliases": ["shop", "negozio"],
+      "kind": "work"
+    },
+    {
+      "key": "garden",
+      "label": "🌱 Garden",
+      "emoji": "🌱",
+      "host_rel": "Garden",
+      "workspace": "/workspaces/garden",
+      "aliases": [],
+      "kind": "personal"
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+{
+  "_comment": "locale/ di prova della suite: vuoto di proposito. I test che vogliono un valore locale lo scrivono da se' (fixture locale_defaults in conftest.py)."
+}

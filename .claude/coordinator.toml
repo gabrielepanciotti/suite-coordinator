@@ -1,0 +1,33 @@
+# Coordinator — manifesto del progetto stesso (letto da manifest.py).
+# Modello FORUM+TOPIC: vive come un topic dentro il forum condiviso "Coordinator
+# Work", non come gruppo dedicato. group_thread_id != 0 → il routing usa il
+# generic handle_message + TOPIC_BINDING[chat:topic] (nessun handler chat-wide).
+# Questo è il topic "sala regia": da qui avvii sessioni e fai gestione base.
+
+[telegram]
+group_chat_id   = -1003899308208   # forum "Coordinator Work"
+group_thread_id = 259              # topic "🧭 Coordinator" (creato 2026-06-12)
+agent           = "generale"        # persona = CLAUDE.md del Coordinator
+pin = "🧭 Sala regia del Coordinator. Da qui gestisci l'ecosistema: /progetti apre il menu progetti · /nuovo avvia una sessione · /riprendi riprende l'ultima · /chiudi termina · /notifiche gestisce gli avvisi schedulati · /hub stato del bus AgentHub · /dispatch invio a un agente prod. Puoi anche scrivermi liberamente per gestione e diagnosi."
+
+# --- Capability Scheduler (issue #17): nodo -> persona via Proposte ---
+# action = "scheduler_proposal" dispatcha in-process (scheduler_client) invece di
+# aprire una sessione claude. La persona conferma dal suo DM Scheduler. Target =
+# chi lancia il comando (gli user id Telegram sono globali). Richiede in .env:
+# SCHEDULER_API_URL + AGENT_API_SECRET (segreto condiviso con Scheduler).
+
+[[capability]]
+key    = "hw-riposo"
+label  = "😴 Scheduler: finestra di riposo"
+action = "scheduler_proposal"
+kind   = "preference"
+scope  = "both"
+hint   = "/hw_riposo 23:00 07:00 — propone la tua finestra di riposo (nessun arg = azzera)"
+
+[[capability]]
+key    = "hw-blocco"
+label  = "⛔ Scheduler: blocco orario"
+action = "scheduler_proposal"
+kind   = "fixed_event"
+scope  = "both"
+hint   = "/hw_blocco 2026-07-05 18:00 20:00 — propone un blocco (solo la data = tutto il giorno)"

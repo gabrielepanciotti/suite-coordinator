@@ -1,0 +1,15 @@
+# Dependencies for tools/fetch_url.py (link-driven /ingest flows).
+# Installed both in the host venv (.venv/Scripts/pip install -r tools/requirements-ingest.txt)
+# and in the bot image (see Dockerfile).
+requests>=2.32
+trafilatura>=2.0
+beautifulsoup4>=4.12
+yt-dlp>=2025.1.26
+openlocationcode>=1.0  # decode Plus Codes from shared Maps links (handle_maps)
+# Travelers reel→radar pipeline (tools/reel_ingest.py + radar_pool.py, run from the
+# Travelers workspace by the gonzalo session). Needs ffmpeg on PATH (Dockerfile).
+faster-whisper>=1.2  # audio transcription of saved reels
+PyYAML>=6            # radar_pool YAML frontmatter
+# httpx (IG saved-collection private API) is already provided by requirements.txt
+# Optional (Maps shared lists, JS-rendered): pip install playwright && python -m playwright install chromium
+# Se assente, fetch_url estrae le liste best-effort dal solo HTML iniziale.

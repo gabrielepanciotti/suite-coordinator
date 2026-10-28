@@ -1,0 +1,6 @@
+# suite-managed — edit in Life/packages/shared/suite_core/blueprint/assets, then `suite conform --all`
+line-length = 100
+target-version = "py313"
+
+[lint]
+select = ["E", "F", "I", "UP", "B"]

@@ -1,0 +1,17 @@
+[
+  {
+    "chiave": "esempio",
+    "titolo": "Servizio di esempio",
+    "dominio": "app.example.com",
+    "url_salute": "https://app.example.com/api/health",
+    "container": [
+      "esempio_backend_prod",
+      "esempio_db_prod"
+    ],
+    "compose_file": "docker-compose.prod.yml",
+    "project_dir": "/srv/esempio",
+    "critico": true,
+    "motore": "desktop",
+    "comando_salute": "curl -s -o /dev/null -w \"%{http_code}\" --max-time 15 http://127.0.0.1:8000/api/health"
+  }
+]

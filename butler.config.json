@@ -1,0 +1,34 @@
+{
+  "watchers": [
+    {
+      "key": "reorg-owner",
+      "kind": "reorg",
+      "cadence": "cron:0 8 * * *",
+      "horizon_hours": 48,
+      "enabled": false,
+      "recipient_profile": "owner"
+    },
+    {
+      "key": "prep-owner",
+      "kind": "prep",
+      "cadence": "cron:0 */3 * * *",
+      "horizon_hours": 6,
+      "enabled": false,
+      "recipient_profile": "owner"
+    }
+  ],
+  "policy": {
+    "reorg_apply_mode": "propose",
+    "prep_output_mode": "readonly_artifact",
+    "trigger_mode": "autonomous",
+    "per_agent": {}
+  },
+  "trust": {
+    "kinds": {},
+    "daily_cap": 0
+  },
+  "action_trust": {
+    "kinds": {},
+    "daily_cap": 0
+  }
+}
